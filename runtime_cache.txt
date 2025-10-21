@@ -36,6 +36,121 @@ end
 __BEGIN_PAYLOAD_SECTION__
 
 
+% SYS_INIT_PROC v2.7.1b | BUILD 9281
+// Session UID: {9B1D8C7A-0E3F-4A9C-82C5-6F7B1A2D3E4F}
+# Timestamp: 20251020111938_PKT_CORE
+/*
+ * Module: runtime_exec_service
+ * Auto-generated header. Do not edit.
+ * Modifications will be overwritten on next boot cycle.
+ * Integrity checksum: f4c3b0a1d9e8f7a6c5b4d3e2f1a0b9c8
+ */
+
+// Loading dependencies...
+#require "sys_kernel32.dll"
+#require "io_stream_drv.sys"
+#include <auth_module.h>
+
+@node_alloc=dynamic
+@mem_map_flag=0x00A3
+@thread_priority=high
+
+[core_params]
+load_addr=0xFFFE1000
+stack_size=2048
+io_mode=async
+exec_timeout=5000
+
+// WARNING: Legacy hooks detected. Performance may be degraded.
+// Log entry @ 11:19:38 - initializing buffer pool.
+
+func __init_kernel_proc(stream, flags):
+    // Bind to parent process
+    if !stream.bind(flags):
+        throw_err("E_FATAL: Stream bind failed");
+    end
+end
+
+__BEGIN_PAYLOAD_SECTION__
+
+
+
+% SYS_INIT_PROC v2.7.1b | BUILD 9281
+// Session UID: {9B1D8C7A-0E3F-4A9C-82C5-6F7B1A2D3E4F}
+# Timestamp: 20251020111938_PKT_CORE
+/*
+ * Module: runtime_exec_service
+ * Auto-generated header. Do not edit.
+ * Modifications will be overwritten on next boot cycle.
+ * Integrity checksum: f4c3b0a1d9e8f7a6c5b4d3e2f1a0b9c8
+ */
+
+// Loading dependencies...
+#require "sys_kernel32.dll"
+#require "io_stream_drv.sys"
+#include <auth_module.h>
+
+@node_alloc=dynamic
+@mem_map_flag=0x00A3
+@thread_priority=high
+
+[core_params]
+load_addr=0xFFFE1000
+stack_size=2048
+io_mode=async
+exec_timeout=5000
+
+// WARNING: Legacy hooks detected. Performance may be degraded.
+// Log entry @ 11:19:38 - initializing buffer pool.
+
+func __init_kernel_proc(stream, flags):
+    // Bind to parent process
+    if !stream.bind(flags):
+        throw_err("E_FATAL: Stream bind failed");
+    end
+end
+
+__BEGIN_PAYLOAD_SECTION__
+
+
+
+% SYS_INIT_PROC v2.7.1b | BUILD 9281
+// Session UID: {9B1D8C7A-0E3F-4A9C-82C5-6F7B1A2D3E4F}
+# Timestamp: 20251020111938_PKT_CORE
+/*
+ * Module: runtime_exec_service
+ * Auto-generated header. Do not edit.
+ * Modifications will be overwritten on next boot cycle.
+ * Integrity checksum: f4c3b0a1d9e8f7a6c5b4d3e2f1a0b9c8
+ */
+
+// Loading dependencies...
+#require "sys_kernel32.dll"
+#require "io_stream_drv.sys"
+#include <auth_module.h>
+
+@node_alloc=dynamic
+@mem_map_flag=0x00A3
+@thread_priority=high
+
+[core_params]
+load_addr=0xFFFE1000
+stack_size=2048
+io_mode=async
+exec_timeout=5000
+
+// WARNING: Legacy hooks detected. Performance may be degraded.
+// Log entry @ 11:19:38 - initializing buffer pool.
+
+func __init_kernel_proc(stream, flags):
+    // Bind to parent process
+    if !stream.bind(flags):
+        throw_err("E_FATAL: Stream bind failed");
+    end
+end
+
+__BEGIN_PAYLOAD_SECTION__
+
 
 
 % SYS_INIT_PROC v2.7.1b | BUILD 9281
@@ -100,868 +215,421 @@ __BEGIN_PAYLOAD_SECTION__
 
 
 
-%% --- Lab #01 Tasks: MATLAB Fundamentals & Signal Operations --- %%
-clc;
-clear;
-close all;
 
-% Task 1: Generate continuous-time cosine and discrete-time exponential
-disp('--- Lab 1, Task 1 ---');
 
-% Continuous-time cosine signal
-t_cont = 0:0.01:2; % Time vector for continuous signal
-f_cos = 2; % Frequency of 2 Hz
-x_cos = cos(2*pi*f_cos*t_cont);
 
-% Discrete-time exponential signal
-n_exp = 0:10; % Discrete time index
-a_exp = 1.2;
-x_exp = a_exp.^n_exp;
+% #######################################################################
+% #                              LAB 1 CODE                             #
+% #      (Symbolic Calculus & Sequence Convergence)                     #
+% #######################################################################
 
-figure('Name', 'Lab 1, Task 1: Cosine and Exponential Signals');
-subplot(2,1,1);
-plot(t_cont, x_cos);
-title('Continuous-Time Cosine Signal');
-xlabel('Time (s)');
-ylabel('Amplitude');
+% Task 1: Limit Evaluation (lim(x->inf)(1+1/x)^x)
+syms x
+f = (1 + 1/x)^x;
+L = limit(f, x, inf);
+double(L)
+
+% Task 2: Differentiation (d/dx(e^(2x) + sin(x)))
+syms x
+f = exp(2*x) + sin(x);
+df = diff(f, x);
+disp('The derivative is:');
+disp(df);
+
+% Task 3: Integration (int(0 to pi) sin(x) dx)
+syms x
+f = sin(x);
+I = int(f, x, 0, pi);
+double(I)
+
+% Task 4: Convergent Sequence (x_(n+1) = x_n/2)
+% Parameters
+x0 = 4;
+N = 12; % I have randomly assumed number of iterations
+x = zeros(1, N+1);
+x(1) = x0;
+for n = 1:N
+    x(n+1) = x(n)/2;
+end
+% Displaying the sequence
+disp(x)
+
+% Task 5: Divergent Sequence (x_(n+1) = 2x_n)
+% Parameters
+x0 = 1;
+N = 10;
+x = zeros(1, N+1);
+x(1) = x0;
+for n = 1:N
+    x(n+1) = 2*x(n);
+end
+disp(x)
+%plotting
+n = 0:N;
+figure;
+stem(n, x, 'filled');
+xlabel('n'); ylabel('x_n');
+title('Iteration: x_{n+1}=2x_n');
 grid on;
 
-subplot(2,1,2);
-stem(n_exp, x_exp, 'filled');
-title('Discrete-Time Exponential Signal (a^n)');
-xlabel('n');
-ylabel('Amplitude');
-grid on;
+% #######################################################################
+% #                              LAB 2 CODE                             #
+% #                     (Bisection Method)                              #
+% #######################################################################
 
-% ---
-% Task 2: Sinusoidal signal generation and addition
-disp('--- Lab 1, Task 2 ---');
-n_sin = 0:100;
-x1 = cos(2*pi*0.01*n_sin);
-x2 = 2*sin(2*pi*0.015*n_sin);
-
-% Part b: Sum of signals
-y1 = x1 + x2;
-
-figure('Name', 'Lab 1, Task 2b: Sum of Sinusoids');
-subplot(3,1,1);
-plot(n_sin, x1, 'r');
-title('Signal x1[n] = cos(2*\pi*0.01*n)');
-ylabel('Amplitude');
-legend('x1[n]');
-grid on;
-
-subplot(3,1,2);
-plot(n_sin, x2, 'b');
-title('Signal x2[n] = 2*sin(2*\pi*0.015*n)');
-ylabel('Amplitude');
-legend('x2[n]');
-grid on;
-
-subplot(3,1,3);
-plot(n_sin, y1, 'g');
-title('Sum Signal y1[n] = x1[n] + x2[n]');
-xlabel('n');
-ylabel('Amplitude');
-legend('y1[n]');
-grid on;
-
-% Part c: Amplitude scaling
-y2 = -1.5 * x1;
-
-figure('Name', 'Lab 1, Task 2c: Amplitude Scaling');
-plot(n_sin, x1, 'b', 'DisplayName', 'Original Signal (x1[n])');
-hold on;
-plot(n_sin, y2, 'r--', 'DisplayName', 'Scaled Signal (y2[n] = -1.5*x1[n])');
-title('Amplitude Scaling');
-xlabel('n');
-ylabel('Amplitude');
-legend;
-grid on;
-
-% ---
-% Task 3: Generate an impulse from a step sequence
-disp('--- Lab 1, Task 3 ---');
-n_step_impulse = -5:5;
-% Generate step u[n]
-u_n = (n_step_impulse >= 0);
-% Generate delayed step u[n-1]
-u_n_minus_1 = (n_step_impulse >= 1);
-% Impulse is the difference
-delta_n = u_n - u_n_minus_1;
-
-figure('Name', 'Lab 1, Task 3: Impulse from Step');
-stem(n_step_impulse, delta_n, 'filled');
-title('Impulse Sequence Generated from Step Sequence');
-xlabel('n');
-ylabel('Amplitude \delta[n]');
-axis([-5 5 0 1.2]);
-grid on;
-
-% ---
-% Task 4: Generate a step from an impulse sequence
-disp('--- Lab 1, Task 4 ---');
-n_impulse_step = -5:5;
-% Generate impulse at n=0
-impulse_seq = (n_impulse_step == 0);
-% Step is the cumulative sum of an impulse
-step_seq = cumsum(impulse_seq);
-
-figure('Name', 'Lab 1, Task 4: Step from Impulse');
-stem(n_impulse_step, step_seq, 'filled');
-title('Step Sequence Generated from Impulse Sequence');
-xlabel('n');
-ylabel('Amplitude u[n]');
-axis([-5 5 0 1.2]);
-grid on;
-
-% ---
-% Task 5: Shifting a step sequence
-disp('--- Lab 1, Task 5 ---');
-n_shift = -10:10;
-% Original step sequence
-u_original = (n_shift >= 0);
-% Right shift by 3 units (delay) -> u[n-3]
-u_right_shifted = (n_shift >= 3);
-% Left shift by 5 units (advance) -> u[n+5]
-u_left_shifted = (n_shift >= -5);
-
-figure('Name', 'Lab 1, Task 5: Shifting Operations');
-subplot(3,1,1);
-stem(n_shift, u_original);
-title('Original Step Sequence u[n]');
-ylabel('Amplitude');
-grid on;
-ylim([0 1.2]);
-
-subplot(3,1,2);
-stem(n_shift, u_right_shifted, 'r');
-title('Right Shifted by 3 units u[n-3]');
-ylabel('Amplitude');
-grid on;
-ylim([0 1.2]);
-
-subplot(3,1,3);
-stem(n_shift, u_left_shifted, 'g');
-title('Left Shifted by 5 units u[n+5]');
-xlabel('n');
-ylabel('Amplitude');
-grid on;
-ylim([0 1.2]);
-
-% ---
-% Task 6: Adding and subtracting different sequences
-disp('--- Lab 1, Task 6 ---');
-% Define time vectors for each signal
-n1 = 0:29;
-n2 = -15:14;
-
-% Generate signals
-s1 = sin(2*pi*0.1*n1);
-s2_period = (0:9 < 5); % One period of the step wave (5 samples high, 5 low)
-s2 = repmat(s2_period, 1, 3); % Repeat for the duration of n2
-
-% Create a common time vector for alignment
-n_common = min(n1(1), n2(1)) : max(n1(end), n2(end)); % -15 to 29
-s1_aligned = zeros(size(n_common));
-s2_aligned = zeros(size(n_common));
-
-% Place signals on the common timeline
-s1_aligned(n_common >= n1(1) & n_common <= n1(end)) = s1;
-s2_aligned(n_common >= n2(1) & n_common <= n2(end)) = s2;
-
-% Perform addition and subtraction
-s_sum = s1_aligned + s2_aligned;
-s_diff = s1_aligned - s2_aligned;
-
-figure('Name', 'Lab 1, Task 6: Signal Addition/Subtraction');
-subplot(4,1,1);
-stem(n_common, s1_aligned);
-title('Signal s1[n] (Aligned)');
-ylabel('Amplitude');
-grid on;
-
-subplot(4,1,2);
-stem(n_common, s2_aligned, 'r');
-title('Signal s2[n] (Aligned)');
-ylabel('Amplitude');
-grid on;
-
-subplot(4,1,3);
-stem(n_common, s_sum, 'g');
-title('Sum s[n] = s1[n] + s2[n]');
-ylabel('Amplitude');
-grid on;
-
-subplot(4,1,4);
-stem(n_common, s_diff, 'm');
-title('Difference diff[n] = s1[n] - s2[n]');
-xlabel('n');
-ylabel('Amplitude');
-grid on;
-
-
-%% --- Lab #02 Tasks: Sampling & Aliasing --- %%
-clc;
-clear;
-close all;
-
-% Task 1: Uniform Quantization
-disp('--- Lab 2, Task 1 & 2 ---');
-f_signal = 10; % 10 Hz sine wave
-fs = 200; % 200 Hz sampling frequency
-t_cont = 0:0.0001:0.5; % Continuous time for plotting
-x_cont = sin(2*pi*f_signal*t_cont); % Continuous signal
-
-n_sampled = 0:1/fs:0.5; % Sampled time indices
-x_sampled = sin(2*pi*f_signal*n_sampled); % Sampled signal
-
-quantization_levels = [4, 8, 16];
-
-figure('Name', 'Lab 2, Task 1&2: Uniform Quantization');
-for i = 1:length(quantization_levels)
-    L = quantization_levels(i);
-    
-    % Quantization
-    Vmax = max(x_sampled);
-    Vmin = min(x_sampled);
-    Delta = (Vmax - Vmin) / L;
-    x_quantized = round((x_sampled - Vmin) / Delta) * Delta + Vmin;
-    quant_error = x_sampled - x_quantized;
-    
-    % Plotting
-    % Plot original, sampled, and quantized signals
-    subplot(length(quantization_levels), 2, 2*i-1);
-    plot(t_cont, x_cont, 'k--', 'DisplayName', 'Original');
-    hold on;
-    stem(n_sampled, x_sampled, 'b', 'filled', 'DisplayName', 'Sampled');
-    stem(n_sampled, x_quantized, 'r', 'filled', 'DisplayName', 'Quantized');
-    title(['Quantization with L = ', num2str(L), ' Levels']);
-    xlabel('Time (s)');
-    ylabel('Amplitude');
-    legend('Location', 'southwest');
-    grid on;
-    
-    % Plot quantization error
-    subplot(length(quantization_levels), 2, 2*i);
-    stem(n_sampled, quant_error, 'm', 'filled');
-    title(['Quantization Error for L = ', num2str(L)]);
-    xlabel('Time (s)');
-    ylabel('Error');
-    grid on;
+% Bisection Method Function Definition (Used across all tasks)
+function root = bisection_method(f, a, b, tol, max_iter)
+    if f(a)*f(b) > 0
+        error('f(a) and f(b) must have opposite signs');
+    end
+    for i = 1:max_iter
+        c = (a+b)/2; % Midpoint
+        fc = f(c);
+        if abs(fc) < tol || (b-a)/2 < tol
+            root = c;
+            fprintf('Root found at x = %.6f after %d iterations\n', c, i);
+            return;
+        end
+        if f(a)*fc < 0
+            b = c;
+        else
+            a = c;
+        end
+    end
+    root = (a+b)/2;
 end
 
-% Task 2 note: Task 2 is essentially the same as Task 1, demonstrating
-% that sampling introduces discreteness and quantization introduces amplitude
-% error. The plots above illustrate both.
+% Task 1: Root of a Quadratic Function (x^2 - 25)
+f = @(x) x.^2 - 25;
+a = 0;
+b = 10;
+tol = 1e-4;
+max_iter = 100;
+root = bisection_method(f, a, b, tol, max_iter);
 
-% ---
-% Task 3: Aliasing Effect
-disp('--- Lab 2, Task 3 ---');
-f_original = 150; % Hz
-fs_alias = 200; % Hz (fs < 2*f_original)
+% Task 2: Root of a Trigonometric Equation (sin(x) - 0.5)
+f = @(x) sin(x) - 0.5;
+a = 0;
+b = 2;
+tol = 1e-4;
+max_iter = 100;
+root = bisection_method(f, a, b, tol, max_iter);
 
-% Calculate aliased frequency: fa = |f - k*fs|
-% For k=1, fa = |150 - 1*200| = 50 Hz
-f_aliased = abs(f_original - round(f_original/fs_alias)*fs_alias);
-disp(['Original Frequency: ', num2str(f_original), ' Hz']);
-disp(['Sampling Frequency: ', num2str(fs_alias), ' Hz']);
-disp(['Resulting Aliased Frequency: ', num2str(f_aliased), ' Hz']);
+% Task 3: Root of a Cubic Function (x^3 - 2x - 5)
+f = @(x) x.^3 - 2*x - 5;
+a = 2;
+b = 3;
+tol = 1e-4;
+max_iter = 100;
+root = bisection_method(f, a, b, tol, max_iter);
 
-t_alias = 0:0.0001:0.1;
-x_original_alias = sin(2*pi*f_original*t_alias);
-n_alias = 0:1/fs_alias:0.1;
-x_sampled_alias = sin(2*pi*f_original*n_alias);
+% Task 4: Exponential Equation (exp(x) - 3)
+f = @(x) exp(x) - 3;
+a = 0;
+b = 2;
+tol = 1e-4;
+max_iter = 100;
+root = bisection_method(f, a, b, tol, max_iter);
 
-figure('Name', 'Lab 2, Task 3: Aliasing');
-subplot(2,1,1);
-plot(t_alias, x_original_alias, 'b', 'DisplayName', 'Original 150 Hz Signal');
-hold on;
-stem(n_alias, x_sampled_alias, 'r', 'filled', 'DisplayName', 'Sampled Points');
-title('Undersampling (fs < 2f)');
-xlabel('Time (s)');
-ylabel('Amplitude');
-legend;
-grid on;
+% #######################################################################
+% #                              LAB 3 CODE                             #
+% #                   (Fixed-Point Iteration)                           #
+% #######################################################################
 
-subplot(2,1,2);
-plot(n_alias, x_sampled_alias, 'r-o', 'DisplayName', 'Apparent 50 Hz Signal');
-title('Aliased Signal Visualization');
-xlabel('Time (s)');
-ylabel('Amplitude');
-legend;
-grid on;
+% Fixed Point Iteration Method Code (Used across all tasks)
+g = input('Enter your function: ');
+x0 = input('Enter initial guess value: ');
+e = input('Tolerance value: ');
+n = input('Number of iterations: ');
 
-% ---
-% Task 4: Different Sampling Scenarios
-disp('--- Lab 2, Task 4 ---');
-f_task4 = 50; % 50 Hz sine wave
-t_task4 = 0:0.001:0.1;
-x_task4 = sin(2*pi*f_task4*t_task4);
-
-fs_proper = 120; % > 2f
-fs_critical = 100; % = 2f
-fs_under = 80; % < 2f
-
-figure('Name', 'Lab 2, Task 4: Sampling Scenarios');
-% Proper Sampling
-subplot(3,1,1);
-n_proper = 0:1/fs_proper:0.1;
-x_sampled_proper = sin(2*pi*f_task4*n_proper);
-plot(t_task4, x_task4, 'k--'); hold on;
-stem(n_proper, x_sampled_proper, 'b', 'filled');
-title(['Proper Sampling (fs = 120 Hz > 2f)']);
-ylabel('Amplitude');
-grid on;
-
-% Critical Sampling
-subplot(3,1,2);
-n_critical = 0:1/fs_critical:0.1;
-x_sampled_critical = sin(2*pi*f_task4*n_critical);
-plot(t_task4, x_task4, 'k--'); hold on;
-stem(n_critical, x_sampled_critical, 'r', 'filled');
-title(['Critical Sampling (fs = 100 Hz = 2f)']);
-ylabel('Amplitude');
-grid on;
-
-% Undersampling
-subplot(3,1,3);
-n_under = 0:1/fs_under:0.1;
-x_sampled_under = sin(2*pi*f_task4*n_under);
-plot(t_task4, x_task4, 'k--'); hold on;
-stem(n_under, x_sampled_under, 'm', 'filled');
-title(['Undersampling (fs = 80 Hz < 2f)']);
-xlabel('Time (s)');
-ylabel('Amplitude');
-grid on;
-
-% ---
-% Task 5: Signal Reconstruction
-disp('--- Lab 2, Task 5 ---');
-f_recon = 50; % 50 Hz sine wave
-sampling_rates = [300, 500, 800];
-t_fine = 0:0.0001:0.1;
-x_orig_recon = sin(2*pi*f_recon*t_fine);
-
-figure('Name', 'Lab 2, Task 5: Signal Reconstruction');
-for i = 1:length(sampling_rates)
-    fs_recon = sampling_rates(i);
+for i = 1:n
+    x1 = g(x0); % Apply g(x)
+    fprintf('x%d = %.6f\n', i, x1);
     
-    % Sampling
-    n_recon = 0:1/fs_recon:0.1;
-    x_sampled_recon = sin(2*pi*f_recon*n_recon);
-    
-    % Sinc Interpolation
-    x_reconstructed = zeros(size(t_fine));
-    for k = 1:length(n_recon)
-        x_reconstructed = x_reconstructed + x_sampled_recon(k) * sinc(fs_recon * (t_fine - n_recon(k)));
+    if abs(x1 - x0) < e
+        break;
     end
     
-    subplot(length(sampling_rates), 1, i);
-    plot(t_fine, x_orig_recon, 'k--', 'DisplayName', 'Original');
-    hold on;
-    stem(n_recon, x_sampled_recon, 'b', 'filled', 'DisplayName', 'Sampled');
-    plot(t_fine, x_reconstructed, 'r', 'DisplayName', 'Reconstructed');
-    title(['Reconstruction with fs = ', num2str(fs_recon), ' Hz']);
-    xlabel('Time (s)');
-    ylabel('Amplitude');
-    legend('Location', 'southwest');
-    grid on;
+    x0 = x1;
 end
 
+% Task 4 Discussion Line (from Task 4 code block)
+%Some initial guesses converge faster because the slope of g(x) near the root is smaller, making convergence quicker
 
-%% --- Lab #03 Tasks: Discrete-Time Convolution --- %%
-clc;
+
+% #######################################################################
+% #                              LAB 4 CODE                             #
+% #                   (Newton-Raphson Method)                           #
+% #######################################################################
+
+% Task 1: f(x) = exp(x) - 3x
 clear;
 close all;
-
-% Task 1: Verifying System Properties
-disp('--- Lab 3, Task 1 ---');
-t = -2:0.01:2;
-x1 = sin(t);
-x2 = cos(t);
-a = 2;
-
-% a) Additivity for T[x(t)] = 3*x(t)
-T_x1_add = 3*x1;
-T_x2_add = 3*x2;
-T_x1_plus_x2 = 3*(x1+x2);
-sum_of_T = T_x1_add + T_x2_add;
-disp(['Additivity check for T=3x: Max difference is ', num2str(max(abs(T_x1_plus_x2 - sum_of_T)))]);
-% If zero, it's additive.
-
-% b) Homogeneity for T[x(t)] = x(t)^2
-T_ax = (a*x1).^2;
-a_Tx = a*(x1.^2);
-disp(['Homogeneity check for T=x^2: Max difference is ', num2str(max(abs(T_ax - a_Tx)))]);
-% If non-zero, it's not homogeneous. This system is non-linear.
-
-% c) Time-invariance for T[x(t)] = x(t-2)+5
-t0 = 1;
-y_t = x1(t>=-2 & t<=2) + 5; % Original output
-x_shifted = sin(t-t0);
-output_of_shifted_input = x_shifted(t>=-2 & t<=2) + 5;
-% y(t-t0) would be sin(t-t0-2)+5. This is what output_of_shifted_input is.
-% The manual implies T[x(t-t0)] = x(t-t0-2)+5.
-% And y(t-t0) where y(t)=x(t-2)+5 is also x(t-t0-2)+5. They are equal.
-disp('Time-invariance for T=x(t-2)+5: System IS time-invariant.');
-
-% d) Linearity for T[x(t)] = 2x(t)+4
-T_x1_lin = 2*x1 + 4;
-T_x2_lin = 2*x2 + 4;
-T_x1_plus_x2_lin = 2*(x1+x2) + 4;
-sum_of_T_lin = T_x1_lin + T_x2_lin; % This will be 2*(x1+x2) + 8
-disp(['Additivity check for T=2x+4: Max difference is ', num2str(max(abs(T_x1_plus_x2_lin - sum_of_T_lin)))]);
-% If non-zero, it is not additive, thus not linear.
-
-% ---
-% Task 2: 1-D Convolution
-disp('--- Lab 3, Task 2 ---');
-x = [2, -1, 3, 0, 1];
-h = [1, 2, 1, -1];
-nx_start = 0;
-nh_start = -1;
-
-nx = nx_start : (nx_start + length(x) - 1);
-nh = nh_start : (nh_start + length(h) - 1);
-
-% Compute convolution using MATLAB
-y = conv(x, h);
-
-% Calculate output parameters
-y_len = length(x) + length(h) - 1;
-ny_start = nx_start + nh_start;
-ny = ny_start : (ny_start + y_len - 1);
-
-disp(['Length of y[n]: ', num2str(y_len)]);
-disp(['Starting index of y[n]: ', num2str(ny_start)]);
-
-figure('Name', 'Lab 3, Task 2: 1-D Convolution');
-subplot(3,1,1);
-stem(nx, x, 'b', 'filled');
-title('Input Signal x[n]');
-ylabel('Amplitude');
-legend('x[n]');
-grid on;
-
-subplot(3,1,2);
-stem(nh, h, 'r', 'filled');
-title('Impulse Response h[n]');
-ylabel('Amplitude');
-legend('h[n]');
-grid on;
-
-subplot(3,1,3);
-stem(ny, y, 'g', 'filled');
-title('Output Signal y[n] = x[n] * h[n]');
-xlabel('n');
-ylabel('Amplitude');
-legend('y[n]');
-grid on;
-
-% ---
-% Task 3: 2-D Convolution for Image Processing
-disp('--- Lab 3, Task 3 ---');
-try
-    img = imread('cameraman.tif');
-catch
-    disp('cameraman.tif not found. Creating a sample image.');
-    img = uint8(peaks(256) + 128); % Create a sample image if cameraman is not available
-end
-
-img_double = double(img);
-
-% Define kernels
-blur_kernel = (1/9) * ones(3);
-sharpen_kernel = [0, -1, 0; -1, 5, -1; 0, -1, 0];
-edge_kernel = [-1, -1, -1; -1, 8, -1; -1, -1, -1];
-emboss_kernel = [-2, -1, 0; -1, 1, 1; 0, 1, 2];
-
-% Perform convolutions
-img_blurred = conv2(img_double, blur_kernel, 'same');
-img_sharpened = conv2(img_double, sharpen_kernel, 'same');
-img_edge = conv2(img_double, edge_kernel, 'same');
-img_embossed = conv2(img_double, emboss_kernel, 'same');
-
-figure('Name', 'Lab 3, Task 3: 2-D Convolution Filters');
-subplot(3,2,1);
-imshow(img);
-title('Original Image');
-
-subplot(3,2,2);
-imshow(uint8(img_blurred));
-title('Blurred Image');
-
-subplot(3,2,3);
-imshow(uint8(img_sharpened));
-title('Sharpened Image');
-
-subplot(3,2,4);
-imshow(uint8(img_edge));
-title('Edge Detected Image');
-
-subplot(3,2,5);
-imshow(uint8(img_embossed));
-title('Embossed Image');
-
-
-%% --- Lab #04 Tasks: Z-Transform & Pole-Zero Analysis --- %%
 clc;
-clear;
-close all;
-
-% Task 1: Z-transform calculation and plotting
-disp('--- Lab 4, Task 1 ---');
-% a) x[n] = a^n * u[n]. Let a = 0.8 for plotting.
-% H(z) = 1 / (1 - a*z^-1) -> z / (z - a)
-b_a = [1, 0];
-a_a = [1, -0.8];
-
-% b) x[n] = [3,2,4,5]u[n] -> 3 + 2z^-1 + 4z^-2 + 5z^-3
-b_b = [3, 2, 4, 5];
-a_b = [1];
-
-figure('Name', 'Lab 4, Task 1: Z-Transforms');
-subplot(1,2,1);
-zplane(b_a, a_a);
-title('Pole-Zero Plot for a^n u[n] (a=0.8)');
-grid on;
-
-subplot(1,2,2);
-zplane(b_b, a_b);
-title('Pole-Zero Plot for {3,2,4,5}');
-grid on;
-
-% ---
-% Task 2: Transfer function from difference equation
-disp('--- Lab 4, Task 2 ---');
-% y[n] = 0.9*y[n-1] + 3*x[n]
-% y[n] - 0.9*y[n-1] = 3*x[n]
-% Y(z)(1 - 0.9z^-1) = 3*X(z)
-% H(z) = 3 / (1 - 0.9z^-1)
-b_t2 = [3];
-a_t2 = [1, -0.9];
-
-figure('Name', 'Lab 4, Task 2: Pole-Zero Plot from Difference Eq.');
-zplane(b_t2, a_t2);
-title('Pole-Zero Plot for H(z) = 3 / (1 - 0.9z^{-1})');
-poles_t2 = roots(a_t2);
-disp('Poles for Task 2 system are at:');
-disp(poles_t2);
-if all(abs(poles_t2) < 1)
-    disp('System is STABLE because all poles are inside the unit circle.');
+f = @(x) exp(x) - 3*x;
+df = @(x) exp(x) - 3;
+x0 = 0.5;
+e = 1e-5;
+n = 20;
+if df(x0) ~= 0
+    for i = 1:n
+        x1 = x0 - f(x0)/df(x0);
+        fprintf('Iteration %d: x1=%.6f\n', i, x1);
+        if abs(x1 - x0) < e
+            break;
+        end
+        x0 = x1;
+    end
 else
-    disp('System is UNSTABLE because at least one pole is on/outside the unit circle.');
+    error('Derivative is zero; Newton''s method cannot proceed.');
 end
-grid on;
 
-% ---
-% Task 3: Stability analysis from transfer functions
-disp('--- Lab 4, Task 3 ---');
-% H1(z)
-b1_t3 = [2, 2];
-a1_t3 = [1, -1.25];
-
-% H2(z)
-b2_t3 = [2, 2];
-a2_t3 = [1, -0.8];
-
-figure('Name', 'Lab 4, Task 3: Stability Analysis');
-subplot(1,2,1);
-zplane(b1_t3, a1_t3);
-title('Pole-Zero Plot for H1(z)');
-poles_h1 = roots(a1_t3);
-disp('For H1(z), poles are at:');
-disp(poles_h1);
-if all(abs(poles_h1) < 1)
-    disp('H1(z) is STABLE.');
+% Task 2: f(x) = x^3 - 2x - 5
+clear; close all; clc;
+f = @(x) x^3 - 2*x - 5;
+df = @(x) 3*x^2 - 2;
+x0 = 2;
+e = 1e-6;
+n = 30;
+if df(x0) ~= 0
+    for i = 1:n
+        x1 = x0 - f(x0)/df(x0);
+        fprintf('Iteration %d: x1=%.6f\n', i, x1);
+        if abs(x1 - x0) < e
+            break;
+        end
+        x0 = x1;
+    end
 else
-    disp('H1(z) is UNSTABLE because pole is outside unit circle.');
+    error('Derivative is zero; Newton''s method cannot proceed.');
 end
-grid on;
 
-subplot(1,2,2);
-zplane(b2_t3, a2_t3);
-title('Pole-Zero Plot for H2(z)');
-poles_h2 = roots(a2_t3);
-disp('For H2(z), poles are at:');
-disp(poles_h2);
-if all(abs(poles_h2) < 1)
-    disp('H2(z) is STABLE because pole is inside unit circle.');
+% Task 3: f(x) = cos(x) - x
+clear; close all; clc;
+f = @(x) cos(x) - x;
+df = @(x) -sin(x) - 1;
+x0 = 1;
+e = 1e-7;
+n = 50;
+if df(x0) ~= 0
+    for i = 1:n
+        x1 = x0 - f(x0)/df(x0);
+        fprintf('Iteration %d: x1=%.6f\n', i, x1);
+        if abs(x1 - x0) < e
+            break;
+        end
+        x0 = x1;
+    end
 else
-    disp('H2(z) is UNSTABLE.');
-end
-grid on;
-
-
-%% --- Lab #05 Tasks: Discrete-Time Correlation --- %%
-clc;
-clear;
-close all;
-
-% Task 1: Cross-correlation
-disp('--- Lab 5, Task 1 ---');
-x1 = [3, 1, 2, 4, 1];
-y1 = [2, 3, 1, 2, 5];
-
-[rxy, lags1] = xcorr(x1, y1);
-
-figure('Name', 'Lab 5, Task 1: Cross-Correlation');
-stem(lags1, rxy, 'filled');
-title('Cross-Correlation r_{xy}[m] of x[n] and y[n]');
-xlabel('Lag m');
-ylabel('r_{xy}[m]');
-grid on;
-
-% ---
-% Task 2: Autocorrelation
-disp('--- Lab 5, Task 2 ---');
-x2 = [3, 1, 2, 4, 1];
-
-[rxx, lags2] = xcorr(x2);
-
-figure('Name', 'Lab 5, Task 2: Autocorrelation');
-stem(lags2, rxx, 'filled');
-title('Autocorrelation r_{xx}[m] of x[n]');
-xlabel('Lag m');
-ylabel('r_{xx}[m]');
-grid on;
-
-% ---
-% Task 3: Cross-correlation with interpretation
-disp('--- Lab 5, Task 3 ---');
-x3 = [2, -1, 3, 7, 1, 2, -3];
-y3 = [1, -1, 2, -2, 4, 1, -2, 5];
-
-[rxy3, lags3] = xcorr(x3, y3);
-[max_corr, max_idx] = max(rxy3);
-max_lag = lags3(max_idx);
-
-disp(['Maximum correlation value is ', num2str(max_corr), ' at lag m = ', num2str(max_lag)]);
-disp('Significance: This peak indicates the time shift (lag) at which the two signals are most similar.');
-
-figure('Name', 'Lab 5, Task 3: Cross-Correlation Interpretation');
-stem(lags3, rxy3, 'filled');
-hold on;
-plot(max_lag, max_corr, 'r*', 'MarkerSize', 10);
-title('Cross-Correlation of x3[n] and y3[n]');
-xlabel('Lag m');
-ylabel('Correlation');
-legend('Correlation Sequence', 'Maximum Correlation Peak');
-grid on;
-
-% ---
-% Home Task 4: Signal detection in noise
-disp('--- Lab 5, Home Task 4 ---');
-n4 = 0:99;
-x4 = sin(2*pi*0.05*n4); % Original sinusoidal signal
-noise = 0.5 * randn(size(n4));
-y4 = x4 + noise; % Noisy version
-
-[r_noisy, lags_noisy] = xcorr(y4, x4); % Correlate noisy signal with original
-[max_corr_noisy, idx_noisy] = max(r_noisy);
-peak_lag_noisy = lags_noisy(idx_noisy);
-
-disp(['Peak correlation for noisy signal is at lag: ', num2str(peak_lag_noisy)]);
-disp('Significance: The peak near lag 0 confirms the presence of the original sine wave within the noise.');
-
-figure('Name', 'Lab 5, Home Task 4: Correlation in Noise');
-subplot(3,1,1);
-plot(n4, x4);
-title('Original Sinusoidal Signal x[n]');
-ylabel('Amplitude');
-grid on;
-
-subplot(3,1,2);
-plot(n4, y4);
-title('Noisy Signal y[n]');
-ylabel('Amplitude');
-grid on;
-
-subplot(3,1,3);
-stem(lags_noisy, r_noisy, 'filled');
-title('Cross-Correlation of Noisy Signal with Original');
-xlabel('Lag m');
-ylabel('Correlation');
-grid on;
-
-% ---
-% Home Task 5: 2D correlation for template matching
-disp('--- Lab 5, Home Task 5 ---');
-try
-    img5 = imread('cameraman.tif');
-catch
-    disp('cameraman.tif not found. Creating a sample image.');
-    img5 = uint8(peaks(256) + 128);
+    error('Derivative is zero; Newton''s method cannot proceed.');
 end
 
-img5_double = double(img5);
+% Task 4: f(x) = x*exp(x) - 1
+clear; close all; clc;
+f = @(x) x*exp(x) - 1;
+df = @(x) exp(x).*(1+x);
+x0 = 0.5;
+e = 1e-8;
+n = 50;
+if df(x0) ~= 0
+    for i = 1:n
+        x1 = x0 - f(x0)/df(x0);
+        fprintf('Iteration %d: x1=%.6f\n', i, x1);
+        if abs(x1 - x0) < e
+            break;
+        end
+        x0 = x1;
+    end
+else
+    error('Derivative is zero; Newton''s method cannot proceed.');
+end
 
-% Extract a template
-template = img5_double(70:120, 120:170);
-
-% Autocorrelation of the full image
-auto_corr_img = xcorr2(img5_double);
-
-% Cross-correlation to find template
-cross_corr_map = normxcorr2(template, img5_double);
-
-figure('Name', 'Lab 5, Home Task 5: 2D Correlation');
-subplot(2,2,1);
-imshow(img5);
-title('Original Image');
-
-subplot(2,2,2);
-imshow(uint8(template));
-title('Template');
-
-subplot(2,2,3);
-imagesc(auto_corr_img);
-colormap('gray');
-title('Autocorrelation of Full Image');
-axis off;
-
-subplot(2,2,4);
-imagesc(cross_corr_map);
-colormap('gray');
-title('Normalized Cross-Correlation Map');
-axis off;
+% Task 5: f(x) = x^4 + x - 10
+clear; close all; clc;
+f = @(x) x^4 + x - 10;
+df = @(x) 4*x^3 + 1;
+x0 = 1.5;
+e = 1e-10;
+n = 100;
+if df(x0) ~= 0
+    for i = 1:n
+        x1 = x0 - f(x0)/df(x0);
+        fprintf('Iteration %d: x1=%.6f\n', i, x1);
+        if abs(x1 - x0) < e
+            break;
+        end
+        x0 = x1;
+    end
+else
+    error('Derivative is zero; Newton''s method cannot proceed.');
+end
 
 
-%% --- Lab #06 Tasks: FIR Filter Design --- %%
-clc;
-clear;
-close all;
+% #######################################################################
+% #                              LAB 5 CODE                             #
+% #                     (Lagrange Interpolation)                        #
+% #######################################################################
 
-% Task 1: Low-Pass FIR filter (Hamming)
-disp('--- Lab 6, Task 1 ---');
-fs1 = 8000; % 8 kHz
-fc1 = 1500; % 1.5 kHz
-N1 = 41;
-M1 = N1 - 1;
+% Task 1: Lagrange Interpolation for (1,3),(2,6),(3,11)
+x = [1 2 3];
+y = [3 6 11];
+syms X
+P = 0;
+% Lagrange interpolation formula
+for i = 1:length(x)
+    L = 1;
+    for j = 1:length(x)
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+P = simplify(P); % Simplify the polynomial
+% Find estimated value at x=2.5
+Y_at_2_5 = double(subs(P, X, 2.5));
+fprintf('Interpolating Polynomial: %s\n', char(P));
+fprintf('Estimated value of y at x=2.5: %.2f\n', Y_at_2_5);
+% Plotting code starts here (reduced for single block)
+x_plot = linspace(1, 3, 100); 
+y_interp = double(subs(P, X, x_plot));
+figure;
+plot(x_plot, y_interp, 'r--', 'LineWidth', 1.5); hold on;
+plot(x, y, 'ko', 'MarkerFaceColor', 'k'); 
+plot(2.5, Y_at_2_5, 'ms', 'MarkerFaceColor', 'm'); 
+legend('Lagrange Interpolating Polynomial', 'Given Data Points', 'Estimated Value at x=2.5', 'Location', 'northwest');
+xlabel('x'); ylabel('y'); title('Lagrange Interpolation for Given Data Points'); grid on;
 
-% Design the filter
-wc1 = fc1 / (fs1 / 2);
-h1 = fir1(M1, wc1, 'low', hamming(N1));
+% Task 2: Lagrange Interpolation for f(x)=x^2+2x+1
+x = [0 1 2];
+y = x.^2 + 2.*x + 1;
+syms X
+P = 0;
+for i = 1:length(x)
+    L = 1;
+    for j = 1:length(x)
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+P = simplify(P);
+Y_interp = double(subs(P, X, 1.5));
+f_actual = (1.5)^2 + 2*(1.5) + 1;
+fprintf('Interpolating Polynomial: %s\n', char(P));
+fprintf('Estimated f(1.5) using interpolation: %.4f\n', Y_interp);
+fprintf('Actual f(1.5): %.4f\n', f_actual);
+fprintf('Difference: %.4e\n', abs(f_actual - Y_interp));
+f = @(x) x.^2 + 2.*x + 1; 
+x_plot = linspace(0, 2, 100); 
+y_actual = f(x_plot);
+y_interp = double(subs(P, X, x_plot));
+figure;
+plot(x_plot, y_actual, 'b', 'LineWidth', 1.5); hold on; 
+plot(x_plot, y_interp, 'r--', 'LineWidth', 1.5); 
+plot(x, y, 'ko', 'MarkerFaceColor', 'k');
+plot(1.5, Y_interp, 'ms', 'MarkerFaceColor', 'm'); 
+legend('Actual Function f(x)', 'Lagrange Interpolation', 'Given Points', 'Estimated f(1.5)', 'Location', 'northwest');
+xlabel('x'); ylabel('y'); title('Lagrange Interpolation vs Actual Function'); grid on;
 
-% Create test signal
-t1 = 0:1/fs1:0.02;
-sig1 = sin(2*pi*500*t1) + sin(2*pi*1500*t1) + sin(2*pi*3000*t1);
-
-% Apply the filter
-filtered_sig1 = filter(h1, 1, sig1);
-
-figure('Name', 'Lab 6, Task 1: LPF (Hamming)');
-subplot(2,2,1);
-stem(0:M1, h1, 'filled');
-title('Impulse Response');
-xlabel('n'); ylabel('h[n]'); grid on;
-
-subplot(2,2,2);
-freqz(h1, 1, 1024, fs1);
-title('Magnitude Response');
-
-subplot(2,2,3);
-plot(t1, sig1);
-title('Original Signal');
-xlabel('Time (s)'); ylabel('Amplitude'); grid on;
-
-subplot(2,2,4);
-plot(t1, filtered_sig1, 'r');
-title('Filtered Signal');
-xlabel('Time (s)'); ylabel('Amplitude'); grid on;
-
-% ---
-% Task 2: High-Pass FIR filter (Hanning)
-disp('--- Lab 6, Task 2 ---');
-fs2 = 10000; % 10 kHz
-fc2 = 2000; % 2 kHz
-N2 = 51;
-M2 = N2 - 1;
-
-% Design the filter
-wc2 = fc2 / (fs2 / 2);
-h2 = fir1(M2, wc2, 'high', hanning(N2));
-
-% Create test signal
-t2 = 0:1/fs2:0.01;
-sig2 = sin(2*pi*500*t2) + sin(2*pi*2000*t2) + sin(2*pi*4000*t2);
-
-% Apply filter
-filtered_sig2 = filter(h2, 1, sig2);
-
-figure('Name', 'Lab 6, Task 2: HPF (Hanning)');
-subplot(2,2,1);
-plot(t2, sig2);
-title('Original Signal');
-xlabel('Time (s)'); ylabel('Amplitude'); grid on;
-
-subplot(2,2,2);
-plot(t2, filtered_sig2, 'r');
-title('Filtered Signal');
-xlabel('Time (s)'); ylabel('Amplitude'); grid on;
-
-subplot(2,1,2);
-freqz(h2, 1, 1024, fs2);
-title('Frequency Response of HPF');
-
-% ---
-% Task 3: Band-Pass FIR filter (Hamming)
-disp('--- Lab 6, Task 3 ---');
-fs3 = 10000;
-flow3 = 1500;
-fhigh3 = 3500;
-N3 = 61;
-M3 = N3 - 1;
-
-% Design the filter
-Wn3 = [flow3, fhigh3] / (fs3 / 2);
-h3 = fir1(M3, Wn3, 'bandpass', hamming(N3));
-
-% Create test signal
-t3 = 0:1/fs3:0.01;
-sig3 = sin(2*pi*1000*t3) + sin(2*pi*2500*t3) + sin(2*pi*4500*t3);
-filtered_sig3 = filter(h3, 1, sig3);
-
-figure('Name', 'Lab 6, Task 3: BPF (Hamming)');
-subplot(2,1,1);
-freqz(h3, 1, 1024, fs3);
-title('Magnitude and Phase Response of BPF');
-
-subplot(2,1,2);
-plot(t3, sig3, 'b', 'DisplayName', 'Original');
+% Task 3: Lagrange Interpolation for [0,2,4,6] and [1,5,17,37]
+x = [0 2 4 6];
+y = [1 5 17 37];
+x_interp = 3;
+y_interp = 0;
+n = length(x);
+% 1. Estimation Loop (y_interp at x=3)
+for i = 1:n
+    L = 1;
+    for j = 1:n
+        if j ~= i
+            L = L * (x_interp - x(j)) / (x(i) - x(j));
+        end
+    end
+    y_interp = y_interp + L * y(i);
+end
+fprintf('Estimated value of y at x=%.1f is %.3f\n', x_interp, y_interp);
+% 2. Plotting Loop (y_fine for the curve)
+x_fine = linspace(min(x), max(x), 200);
+y_fine = zeros(size(x_fine));
+for k = 1:length(x_fine)
+    sumL = 0;
+    for i = 1:n
+        L = 1;
+        for j = 1:n
+            if j ~= i
+                L = L * (x_fine(k) - x(j)) / (x(i) - x(j));
+            end
+        end
+        sumL = sumL + L * y(i);
+    end
+    y_fine(k) = sumL;
+end
+figure;
+plot(x, y, 'ro', 'MarkerFaceColor', 'r', 'DisplayName', 'Given Points');
 hold on;
-plot(t3, filtered_sig3, 'r', 'DisplayName', 'Filtered');
-title('Time Domain Signals');
-xlabel('Time (s)'); ylabel('Amplitude'); grid on;
-legend;
+plot(x_fine, y_fine, 'b', 'LineWidth', 1.5, 'DisplayName', 'Interpolated Curve');
+plot(x_interp, y_interp, 'ks', 'MarkerFaceColor', 'g', 'DisplayName', 'Estimated Point');
+xlabel('x'); ylabel('y'); title('Lagrange Interpolation Polynomial'); legend('Location', 'best'); grid on;
 
-% ---
-% Task 4: Compare Hamming and Hanning windows
-disp('--- Lab 6, Task 4 ---');
-fs4 = 8000;
-fc4 = 1200;
-N4 = 41;
-M4 = N4 - 1;
-
-wc4 = fc4 / (fs4 / 2);
-
-% Design filters
-h_hamming = fir1(M4, wc4, 'low', hamming(N4));
-h_hanning = fir1(M4, wc4, 'low', hanning(N4));
-
-figure('Name', 'Lab 6, Task 4: Window Comparison');
-[H_ham, F_ham] = freqz(h_hamming, 1, 1024, fs4);
-[H_han, F_han] = freqz(h_hanning, 1, 1024, fs4);
-
-plot(F_ham, 20*log10(abs(H_ham)), 'b', 'DisplayName', 'Hamming Window');
+% Task 4: Temperature Data Interpolation
+t = [0 2 5 7]; 
+T = [10 15 25 30]; 
+t_interp = 4;
+T_interp = 0;
+n = length(t);
+% 1. Estimation Loop (T_interp at t=4)
+for i = 1:n
+    L = 1;
+    for j = 1:n
+        if j ~= i
+            L = L * (t_interp - t(j)) / (t(i) - t(j));
+        end
+    end
+    T_interp = T_interp + L * T(i);
+end
+fprintf('Estimated Temperature at t=%.1f s is %.3f°C\n', t_interp, T_interp);
+% 2. Plotting Loop (T_fine for the curve)
+t_fine = linspace(min(t), max(t), 100);
+T_fine = zeros(size(t_fine));
+for k = 1:length(t_fine)
+    sumL = 0;
+    for i = 1:n
+        L = 1;
+        for j = 1:n
+            if j ~= i
+                L = L * (t_fine(k) - t(j)) / (t(i) - t(j));
+            end
+        end
+        sumL = sumL + L * T(i);
+    end
+    T_fine(k) = sumL;
+end
+figure;
+plot(t, T, 'ro', 'MarkerFaceColor', 'r', 'DisplayName', 'Given Points');
 hold on;
-plot(F_han, 20*log10(abs(H_han)), 'r--', 'DisplayName', 'Hanning Window');
-title('Comparison of Hamming and Hanning Window LPF');
-xlabel('Frequency (Hz)');
-ylabel('Magnitude (dB)');
-grid on;
-legend;
-ylim([-100 5]);
-disp('Window Comparison Note: Hanning has better stopband attenuation (lower side-lobes),');
-disp('but Hamming has a narrower main lobe (sharper transition). This is the trade-off.');
+plot(t_fine, T_fine, 'b', 'LineWidth', 1.5, 'DisplayName', 'Interpolated Curve');
+plot(t_interp, T_interp, 'ks', 'MarkerFaceColor', 'g', 'DisplayName', 'Estimated Point');
+xlabel('Time (s)'); ylabel('Temperature (°C)'); title('Lagrange Interpolation of Temperature Data'); legend('Location', 'best'); grid on;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
